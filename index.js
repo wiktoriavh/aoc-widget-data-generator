@@ -1,4 +1,5 @@
 const core = require("@actions/core");
+const fetch = require("node-fetch");
 
 const YEAR = core.getInput("year");
 const LANGUAGE = core.getInput("language");
