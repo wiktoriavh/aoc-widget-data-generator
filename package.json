@@ -1,0 +1,11 @@
+{
+  "name": "aoc-widget-data-generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Wiktoria van Harneveldt <62669899+Braweria@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
+}
