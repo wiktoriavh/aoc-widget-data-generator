@@ -14,7 +14,7 @@ jobs:
         with:
           year: 2015
           language: Go
-          repo_href: https://github.com/Braweria/advent-of-code-2015-go
+          repo_href: Braweria/advent-of-code-2015-go
           directory: days
           extension: go
           output: example/output.json

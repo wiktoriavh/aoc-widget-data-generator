@@ -8,8 +8,8 @@ inputs:
   language:
     description: Language you solved the puzzles in
     required: true
-  repo_href:
-    description: URL to your GitHub repository with your solutions
+  repo:
+    description: username/repo-name of your repository
     required: true
   directory:
     description: Directory of your solutions.
