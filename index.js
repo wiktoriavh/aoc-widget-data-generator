@@ -20,8 +20,13 @@ const ext = "go";
 const directory = "days";
 
 const getFullPath = (repo, dir) => {
-  // https://api.github.com/repos/Braweria/advent-of-code-2015-go/contents/days
-  return `https://api.github.com/repos/${repo}/content/${dir}`;
+  return `https://api.github.com/repos/${repo}/contents/${dir}`;
 };
 
-console.log(getFullPath(REPO, DIRECTORY));
+const getFiles = async (path) => {
+  const response = await fetch(path);
+  const data = await response.json();
+  return data;
+};
+
+console.log(getFiles(getFullPath(REPO, DIRECTORY)));
