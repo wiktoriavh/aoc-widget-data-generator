@@ -9,12 +9,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: yarn --frozen-lockfile
       - uses: Braweria/aoc-widget-data-generator@main
         with:
           year: 2015
           language: Go
-          repo_href: Braweria/advent-of-code-2015-go
+          repo: Braweria/advent-of-code-2015-go
           directory: days
           extension: go
           output: example/output.json
