@@ -1,0 +1,19 @@
+name: Generate Advent of Code Data for Widget
+on: push
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Braweria/aoc-widget-data-generator@main
+        with:
+          year: 2015
+          language: Go
+          repo_href: https://github.com/Braweria/advent-of-code-2015-go
+          directory: days
+          extension: go
+          ouput: example/output.json
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: generating aoc data
