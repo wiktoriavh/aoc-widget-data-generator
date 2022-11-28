@@ -1,0 +1,26 @@
+name: Advent of Code Widget Metadata Generator
+author: Wiktoria van Harneveldt (@Braweria)
+description: A workflow to generate metadata used for the Advent of Code Widget, that can be embedded into portfolio websites.
+inputs:
+  year:
+    description: Year of your Advent of Code Solutions
+    required: true
+  language:
+    description: Language you solved the puzzles in
+    required: true
+  repo_href:
+    description: URL to your GitHub repository with your solutions
+    required: true
+  directory:
+    description: Directory of your solutions.
+    required: true
+  extension:
+    description: Extension of your files, e.g. js or go.
+    required: true
+  output:
+    description: Output file of the result.
+    required: false
+    default: aoc-widget-data.json
+runs:
+  using: "node16"
+  main: "index.js"
