@@ -6,7 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: yarn
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: yarn ci
       - uses: Braweria/aoc-widget-data-generator@main
         with:
           year: 2015
