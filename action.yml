@@ -1,4 +1,4 @@
-name: Advent of Code Widget Metadata Generator
+name: Advent of Code Data Generator
 author: Wiktoria van Harneveldt (@Braweria)
 description: A workflow to generate metadata used for the Advent of Code Widget, that can be embedded into portfolio websites.
 inputs:
