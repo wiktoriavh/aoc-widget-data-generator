@@ -25,7 +25,7 @@ jobs:
           language: JavaScript
           repo: Braweria/Advent-of-Code
           directory: 2020/src
-       - uses: Braweria/aoc-widget-data-generator@main
+      - uses: Braweria/aoc-widget-data-generator@main
         with:
           year: 2021
           language: TypeScript
