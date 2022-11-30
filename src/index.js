@@ -64,13 +64,17 @@ const appendToExisting = (structure) => {
 };
 
 function saveToFile(data) {
-  fs.writeFile(OUTPUT + "/aoc-data.json", JSON.stringify(data), (error) => {
-    if (error) {
-      console.log(error);
-      return;
+  fs.writeFile(
+    OUTPUT + "/aoc-data.json",
+    JSON.stringify(data, null, 4),
+    (error) => {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      console.log("New file was saved successfully");
     }
-    console.log("New file was saved successfully");
-  });
+  );
 }
 
 const init = async () => {
