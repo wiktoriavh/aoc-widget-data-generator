@@ -17,10 +17,10 @@ inputs:
   extension:
     description: Extension of your files, e.g. js or go.
     required: true
-  output:
-    description: Output file of the result.
-    required: false
-    default: aoc-widget-data.json
+  # output:
+  #   description: Output file of the result.
+  #   required: false
+  #   default: aoc-widget-data.json
 runs:
   using: "node16"
   main: "index.js"
