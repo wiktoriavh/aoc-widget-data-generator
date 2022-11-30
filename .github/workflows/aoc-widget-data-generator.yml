@@ -19,7 +19,6 @@ jobs:
           language: Go
           repo: Braweria/advent-of-code-2015-go
           directory: days
-          extension: go
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: generating aoc data

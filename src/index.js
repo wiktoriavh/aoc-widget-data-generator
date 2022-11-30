@@ -1,4 +1,6 @@
 import * as core from "@actions/core";
+import fs from "fs";
+import path from "path";
 import fetch from "node-fetch";
 
 const YEAR = core.getInput("year");
@@ -6,37 +8,79 @@ const LANGUAGE = core.getInput("language");
 const REPO = core.getInput("repo");
 const DIRECTORY = core.getInput("directory");
 const OUTPUT = core.getInput("output");
-const EXTENSION = core.getInput("extension");
 
-const getFilename = (day, extensions) => {
-  return `${day}.${extensions}`;
-};
-
-const getPath = (directory, filename) => {
-  return `${directory}/${filename}`;
-};
-
-const repo = "Braweria/advent-of-code-2015-go";
-const ext = "go";
-const directory = "days";
-
-const getFullPath = (repo, dir) => {
+const createGithubApiPath = (repo, dir) => {
   return `https://api.github.com/repos/${repo}/contents/${dir}`;
 };
 
-const getFiles = async (path) => {
+const getData = async (path) => {
   const response = await fetch(path);
-  const data = await response.json();
-  return data;
+  return response.json();
 };
 
-const readFile = async () => {
+const reduceInformation = (files) => {
+  return files.map((file) => ({ name: file.name, url: file.html_url }));
+};
+
+const convertToNumber = (filenbaseame) => {
+  const filename = path.parse(filenbaseame).name;
+  const day = /\d+/gi.exec(filename);
+  return Number(day);
+};
+
+const createStructure = (files) => {
+  return files.reduce((accumulated, current) => {
+    const dayNumber = convertToNumber(current.name);
+
+    if (dayNumber === 0) {
+      return accumulated;
+    }
+
+    const reduced = {
+      ...accumulated,
+      [dayNumber]: current.url,
+    };
+
+    return reduced;
+  }, {});
+};
+
+const appendToExisting = (structure) => {
+  let existingFile = "{}";
+
   try {
-    const data = await getFiles(getFullPath(REPO, DIRECTORY));
-    console.log(data);
+    existingFile = fs.readFileSync(OUTPUT + "/aoc-data.json", "utf8");
   } catch (error) {
-    console.log(error);
+    console.log("No such file was found");
   }
+  const existingStructure = JSON.parse(existingFile);
+  return {
+    ...existingStructure,
+    [YEAR]: {
+      ...existingStructure[YEAR],
+      [LANGUAGE]: structure,
+    },
+  };
 };
 
-console.log(readFile());
+function saveToFile(data) {
+  fs.writeFile(OUTPUT + "/aoc-data.json", JSON.stringify(data), (error) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log("New file was saved successfully");
+  });
+}
+
+const init = async () => {
+  saveToFile(
+    appendToExisting(
+      createStructure(
+        reduceInformation(await getData(createGithubApiPath(REPO, DIRECTORY)))
+      )
+    )
+  );
+};
+
+init();

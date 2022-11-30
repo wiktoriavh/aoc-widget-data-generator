@@ -671,7 +671,7 @@ var require_file_command = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.prepareKeyValueMessage = exports.issueFileCommand = void 0;
-    var fs2 = __importStar(require("fs"));
+    var fs3 = __importStar(require("fs"));
     var os = __importStar(require("os"));
     var uuid_1 = require_dist();
     var utils_1 = require_utils();
@@ -680,10 +680,10 @@ var require_file_command = __commonJS({
       if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
       }
-      if (!fs2.existsSync(filePath)) {
+      if (!fs3.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
       }
-      fs2.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
+      fs3.appendFileSync(filePath, `${utils_1.toCommandValue(message)}${os.EOL}`, {
         encoding: "utf8"
       });
     }
@@ -1942,7 +1942,7 @@ var require_path_utils = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
-    var path = __importStar(require("path"));
+    var path2 = __importStar(require("path"));
     function toPosixPath(pth) {
       return pth.replace(/[\\]/g, "/");
     }
@@ -1952,7 +1952,7 @@ var require_path_utils = __commonJS({
     }
     exports.toWin32Path = toWin32Path;
     function toPlatformPath(pth) {
-      return pth.replace(/[/\\]/g, path.sep);
+      return pth.replace(/[/\\]/g, path2.sep);
     }
     exports.toPlatformPath = toPlatformPath;
   }
@@ -2023,7 +2023,7 @@ var require_core = __commonJS({
     var file_command_1 = require_file_command();
     var utils_1 = require_utils();
     var os = __importStar(require("os"));
-    var path = __importStar(require("path"));
+    var path2 = __importStar(require("path"));
     var oidc_utils_1 = require_oidc_utils();
     var ExitCode;
     (function(ExitCode2) {
@@ -2051,7 +2051,7 @@ var require_core = __commonJS({
       } else {
         command_1.issueCommand("add-path", {}, inputPath);
       }
-      process.env["PATH"] = `${inputPath}${path.delimiter}${process.env["PATH"]}`;
+      process.env["PATH"] = `${inputPath}${path2.delimiter}${process.env["PATH"]}`;
     }
     exports.addPath = addPath;
     function getInput2(name, options) {
@@ -3500,10 +3500,10 @@ var require_ponyfill_es2018 = __commonJS({
         }
         return size;
       }
-      function convertQueuingStrategy(init, context) {
-        assertDictionary(init, context);
-        const highWaterMark = init === null || init === void 0 ? void 0 : init.highWaterMark;
-        const size = init === null || init === void 0 ? void 0 : init.size;
+      function convertQueuingStrategy(init2, context) {
+        assertDictionary(init2, context);
+        const highWaterMark = init2 === null || init2 === void 0 ? void 0 : init2.highWaterMark;
+        const size = init2 === null || init2 === void 0 ? void 0 : init2.size;
         return {
           highWaterMark: highWaterMark === void 0 ? void 0 : convertUnrestrictedDouble(highWaterMark),
           size: size === void 0 ? void 0 : convertQueuingStrategySize(size, `${context} has member 'size' that`)
@@ -5355,9 +5355,9 @@ var require_ponyfill_es2018 = __commonJS({
       function streamBrandCheckException$1(name) {
         return new TypeError(`ReadableStream.prototype.${name} can only be used on a ReadableStream`);
       }
-      function convertQueuingStrategyInit(init, context) {
-        assertDictionary(init, context);
-        const highWaterMark = init === null || init === void 0 ? void 0 : init.highWaterMark;
+      function convertQueuingStrategyInit(init2, context) {
+        assertDictionary(init2, context);
+        const highWaterMark = init2 === null || init2 === void 0 ? void 0 : init2.highWaterMark;
         assertRequiredField(highWaterMark, "highWaterMark", "QueuingStrategyInit");
         return {
           highWaterMark: convertUnrestrictedDouble(highWaterMark)
@@ -6538,6 +6538,8 @@ var init_multipart_parser = __esm({
 
 // src/index.js
 var core = __toESM(require_core());
+var import_fs = __toESM(require("fs"));
+var import_path = __toESM(require("path"));
 
 // node_modules/node-fetch/src/index.js
 var import_node_http2 = __toESM(require("node:http"), 1);
@@ -6878,23 +6880,23 @@ var validateHeaderValue = typeof import_node_http.default.validateHeaderValue ==
   }
 };
 var Headers = class extends URLSearchParams {
-  constructor(init) {
+  constructor(init2) {
     let result = [];
-    if (init instanceof Headers) {
-      const raw = init.raw();
+    if (init2 instanceof Headers) {
+      const raw = init2.raw();
       for (const [name, values] of Object.entries(raw)) {
         result.push(...values.map((value) => [name, value]));
       }
-    } else if (init == null) {
-    } else if (typeof init === "object" && !import_node_util2.types.isBoxedPrimitive(init)) {
-      const method = init[Symbol.iterator];
+    } else if (init2 == null) {
+    } else if (typeof init2 === "object" && !import_node_util2.types.isBoxedPrimitive(init2)) {
+      const method = init2[Symbol.iterator];
       if (method == null) {
-        result.push(...Object.entries(init));
+        result.push(...Object.entries(init2));
       } else {
         if (typeof method !== "function") {
           throw new TypeError("Header pairs must be iterable");
         }
-        result = [...init].map((pair) => {
+        result = [...init2].map((pair) => {
           if (typeof pair !== "object" || import_node_util2.types.isBoxedPrimitive(pair)) {
             throw new TypeError("Each header pair must be an iterable object");
           }
@@ -7111,17 +7113,17 @@ var Response = class extends Body {
     response[INTERNALS2].type = "error";
     return response;
   }
-  static json(data = void 0, init = {}) {
+  static json(data = void 0, init2 = {}) {
     const body = JSON.stringify(data);
     if (body === void 0) {
       throw new TypeError("data is not JSON serializable");
     }
-    const headers = new Headers(init && init.headers);
+    const headers = new Headers(init2 && init2.headers);
     if (!headers.has("content-type")) {
       headers.set("content-type", "application/json");
     }
     return new Response(body, {
-      ...init,
+      ...init2,
       headers
     });
   }
@@ -7306,7 +7308,7 @@ var doBadDataWarn = (0, import_node_util3.deprecate)(
   "https://github.com/node-fetch/node-fetch/issues/1000 (request)"
 );
 var Request = class extends Body {
-  constructor(input, init = {}) {
+  constructor(input, init2 = {}) {
     let parsedURL;
     if (isRequest(input)) {
       parsedURL = new URL(input.url);
@@ -7317,21 +7319,21 @@ var Request = class extends Body {
     if (parsedURL.username !== "" || parsedURL.password !== "") {
       throw new TypeError(`${parsedURL} is an url with embedded credentials.`);
     }
-    let method = init.method || input.method || "GET";
+    let method = init2.method || input.method || "GET";
     if (/^(delete|get|head|options|post|put)$/i.test(method)) {
       method = method.toUpperCase();
     }
-    if (!isRequest(init) && "data" in init) {
+    if (!isRequest(init2) && "data" in init2) {
       doBadDataWarn();
     }
-    if ((init.body != null || isRequest(input) && input.body !== null) && (method === "GET" || method === "HEAD")) {
+    if ((init2.body != null || isRequest(input) && input.body !== null) && (method === "GET" || method === "HEAD")) {
       throw new TypeError("Request with GET/HEAD method cannot have body");
     }
-    const inputBody = init.body ? init.body : isRequest(input) && input.body !== null ? clone(input) : null;
+    const inputBody = init2.body ? init2.body : isRequest(input) && input.body !== null ? clone(input) : null;
     super(inputBody, {
-      size: init.size || input.size || 0
+      size: init2.size || input.size || 0
     });
-    const headers = new Headers(init.headers || input.headers || {});
+    const headers = new Headers(init2.headers || input.headers || {});
     if (inputBody !== null && !headers.has("Content-Type")) {
       const contentType = extractContentType(inputBody, this);
       if (contentType) {
@@ -7339,13 +7341,13 @@ var Request = class extends Body {
       }
     }
     let signal = isRequest(input) ? input.signal : null;
-    if ("signal" in init) {
-      signal = init.signal;
+    if ("signal" in init2) {
+      signal = init2.signal;
     }
     if (signal != null && !isAbortSignal(signal)) {
       throw new TypeError("Expected signal to be an instanceof AbortSignal or EventTarget");
     }
-    let referrer = init.referrer == null ? input.referrer : init.referrer;
+    let referrer = init2.referrer == null ? input.referrer : init2.referrer;
     if (referrer === "") {
       referrer = "no-referrer";
     } else if (referrer) {
@@ -7356,19 +7358,19 @@ var Request = class extends Body {
     }
     this[INTERNALS3] = {
       method,
-      redirect: init.redirect || input.redirect || "follow",
+      redirect: init2.redirect || input.redirect || "follow",
       headers,
       parsedURL,
       signal,
       referrer
     };
-    this.follow = init.follow === void 0 ? input.follow === void 0 ? 20 : input.follow : init.follow;
-    this.compress = init.compress === void 0 ? input.compress === void 0 ? true : input.compress : init.compress;
-    this.counter = init.counter || input.counter || 0;
-    this.agent = init.agent || input.agent;
-    this.highWaterMark = init.highWaterMark || input.highWaterMark || 16384;
-    this.insecureHTTPParser = init.insecureHTTPParser || input.insecureHTTPParser || false;
-    this.referrerPolicy = init.referrerPolicy || input.referrerPolicy || "";
+    this.follow = init2.follow === void 0 ? input.follow === void 0 ? 20 : input.follow : init2.follow;
+    this.compress = init2.compress === void 0 ? input.compress === void 0 ? true : input.compress : init2.compress;
+    this.counter = init2.counter || input.counter || 0;
+    this.agent = init2.agent || input.agent;
+    this.highWaterMark = init2.highWaterMark || input.highWaterMark || 16384;
+    this.insecureHTTPParser = init2.insecureHTTPParser || input.insecureHTTPParser || false;
+    this.referrerPolicy = init2.referrerPolicy || input.referrerPolicy || "";
   }
   get method() {
     return this[INTERNALS3].method;
@@ -7756,16 +7758,74 @@ var LANGUAGE = core.getInput("language");
 var REPO = core.getInput("repo");
 var DIRECTORY = core.getInput("directory");
 var OUTPUT = core.getInput("output");
-var EXTENSION = core.getInput("extension");
-var getFullPath = (repo, dir) => {
+var createGithubApiPath = (repo, dir) => {
   return `https://api.github.com/repos/${repo}/contents/${dir}`;
 };
-var getFiles = async (path) => {
-  const response = await fetch(path);
-  const data = await response.json();
-  return data;
+var getData = async (path2) => {
+  const response = await fetch(path2);
+  return response.json();
 };
-console.log(getFiles(getFullPath(REPO, DIRECTORY)));
+var reduceInformation = (files) => {
+  return files.map((file) => ({ name: file.name, url: file.html_url }));
+};
+var convertToNumber = (filenbaseame) => {
+  const filename = import_path.default.parse(filenbaseame).name;
+  const day = /\d+/gi.exec(filename);
+  return Number(day);
+};
+var createStructure = (files) => {
+  return files.reduce((accumulated, current) => {
+    const dayNumber = convertToNumber(current.name);
+    if (dayNumber === 0) {
+      return accumulated;
+    }
+    const reduced = {
+      ...accumulated,
+      [dayNumber]: current.url
+    };
+    return reduced;
+  }, {});
+};
+var appendToExisting = (structure) => {
+  const existingFile = import_fs.default.readFileSync("example.json", "utf8");
+  const existingStructure = JSON.parse(existingFile);
+  return {
+    ...existingStructure,
+    [YEAR]: {
+      ...existingStructure[YEAR],
+      [LANGUAGE]: structure
+    }
+  };
+};
+function saveToFile(data) {
+  import_fs.default.writeFile(OUTPUT, JSON.stringify(data), (error) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log("file was saved");
+  });
+}
+var init = async () => {
+  saveToFile(
+    appendToExisting(
+      createStructure(
+        reduceInformation(await getData(createGithubApiPath(REPO, DIRECTORY)))
+      )
+    )
+  );
+};
+init();
+function testing() {
+  console.log("reading file...");
+  try {
+    const txt = import_fs.default.readFileSync("does-not-exist.json", "utf8");
+    console.log("hmm, found", txt);
+  } catch (error) {
+    console.log("whoops failed", error);
+  }
+}
+testing();
 /*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
