@@ -10,8 +10,9 @@ jobs:
         with:
           node-version: 16
           cache: "yarn"
-      - run: yarn install --frozen-lockfile
-      - run: ls -a
+      - run: |
+        yarn install --frozen-lockfile
+        yarn build
       - uses: Braweria/aoc-widget-data-generator@main
         with:
           year: 2015
