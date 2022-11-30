@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-        run: yarn
+      - run: npm ci
       - uses: Braweria/aoc-widget-data-generator@main
         with:
           year: 2015
