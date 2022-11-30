@@ -7765,7 +7765,15 @@ var getFiles = async (path) => {
   const data = await response.json();
   return data;
 };
-console.log(getFiles(getFullPath(REPO, DIRECTORY)));
+var readFile = async () => {
+  try {
+    const data = await getFiles(getFullPath(REPO, DIRECTORY));
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+console.log(readFile());
 /*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
