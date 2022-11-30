@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: Braweria/aoc-widget-data-generator@main
+      - uses: ../../action.yml
         with:
           year: 2015
           language: Go
