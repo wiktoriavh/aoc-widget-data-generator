@@ -1,4 +1,4 @@
-import core from "@actions/core";
+import * as core from "@actions/core";
 import fetch from "node-fetch";
 
 const YEAR = core.getInput("year");
