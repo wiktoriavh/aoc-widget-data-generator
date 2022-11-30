@@ -30,4 +30,4 @@ const getFiles = async (path) => {
   return data;
 };
 
-console.log(getFiles(getFullPath(REPO, DIRECTORY)));
+console.log(await getFiles(getFullPath(REPO, DIRECTORY)));
