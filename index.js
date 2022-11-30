@@ -7781,7 +7781,7 @@ var createStructure = (files) => {
     }
     const reduced = {
       ...accumulated,
-      [dayNumber]: current.url
+      [dayNumber]: { url: current.url }
     };
     return reduced;
   }, {});
