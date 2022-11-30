@@ -7787,7 +7787,12 @@ var createStructure = (files) => {
   }, {});
 };
 var appendToExisting = (structure) => {
-  const existingFile = import_fs.default.readFileSync("example.json", "utf8");
+  let existingFile = "{}";
+  try {
+    existingFile = import_fs.default.readFileSync(OUTPUT + "/aoc-data.json", "utf8");
+  } catch (error) {
+    console.log("No such file was found");
+  }
   const existingStructure = JSON.parse(existingFile);
   return {
     ...existingStructure,
@@ -7798,12 +7803,12 @@ var appendToExisting = (structure) => {
   };
 };
 function saveToFile(data) {
-  import_fs.default.writeFile(OUTPUT, JSON.stringify(data), (error) => {
+  import_fs.default.writeFile(OUTPUT + "/aoc-data.json", JSON.stringify(data), (error) => {
     if (error) {
       console.log(error);
       return;
     }
-    console.log("file was saved");
+    console.log("New file was saved successfully");
   });
 }
 var init = async () => {
@@ -7816,16 +7821,6 @@ var init = async () => {
   );
 };
 init();
-function testing() {
-  console.log("reading file...");
-  try {
-    const txt = import_fs.default.readFileSync("does-not-exist.json", "utf8");
-    console.log("hmm, found", txt);
-  } catch (error) {
-    console.log("whoops failed", error);
-  }
-}
-testing();
 /*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
