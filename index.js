@@ -7803,13 +7803,17 @@ var appendToExisting = (structure) => {
   };
 };
 function saveToFile(data) {
-  import_fs.default.writeFile(OUTPUT + "/aoc-data.json", JSON.stringify(data), (error) => {
-    if (error) {
-      console.log(error);
-      return;
+  import_fs.default.writeFile(
+    OUTPUT + "/aoc-data.json",
+    JSON.stringify(data, null, 4),
+    (error) => {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      console.log("New file was saved successfully");
     }
-    console.log("New file was saved successfully");
-  });
+  );
 }
 var init = async () => {
   saveToFile(
