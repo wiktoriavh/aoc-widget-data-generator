@@ -30,4 +30,13 @@ const getFiles = async (path) => {
   return data;
 };
 
-console.log(await getFiles(getFullPath(REPO, DIRECTORY)));
+const readFile = async () => {
+  try {
+    const data = await getFiles(getFullPath(REPO, DIRECTORY));
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+console.log(readFile());
