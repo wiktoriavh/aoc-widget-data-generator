@@ -8,7 +8,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
       - uses: Braweria/aoc-widget-data-generator@main
         with:
           year: 2015
@@ -17,7 +19,6 @@ jobs:
           directory: days
           extension: go
           output: example/output.json
-      - run: npm ci
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: generating aoc data
