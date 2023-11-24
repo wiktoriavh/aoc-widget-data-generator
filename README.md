@@ -39,13 +39,13 @@ jobs:
       - run: |
           yarn install --frozen-lockfile
           yarn build
-      - uses: Braweria/aoc-widget-data-generator@v1
+      - uses: wiktoriavh/aoc-widget-data-generator@v1
         with:
           year: 2015
           # the year the advent of code is from
           language: Go
           # the language you solved it in
-          repo: Braweria/advent-of-code-2015-go
+          repo: wiktoriavh/advent-of-code-2015-go
           # needs to be owner/repo
           directory: days
           # the directory your solutions are in
@@ -62,28 +62,28 @@ jobs:
 You can also fetch several years of different repos or of the same repo. You then just need to repeat the same, but with updated data. You can view a [production example here.](.github/workflows/aoc-widget-data-generator.yml)
 
 ```yml
-- uses: Braweria/aoc-widget-data-generator@v1
+- uses: wiktoriavh/aoc-widget-data-generator@v1
   with:
     year: 2015
     language: Go
-    repo: Braweria/advent-of-code-2015-go
+    repo: wiktoriavh/advent-of-code-2015-go
     directory: days
-- uses: Braweria/aoc-widget-data-generator@v1
+- uses: wiktoriavh/aoc-widget-data-generator@v1
   with:
     year: 2021
     language: TypeScript
-    repo: Braweria/Advent-of-Code
+    repo: wiktoriavh/Advent-of-Code
     directory: 2021/src
 ```
 
 You can also choose the output directory of where to save the new file.
 
 ```yml
-- uses: Braweria/aoc-widget-data-generator@v1
+- uses: wiktoriavh/aoc-widget-data-generator@v1
   with:
     year: 2015
     language: Go
-    repo: Braweria/advent-of-code-2015-go
+    repo: wiktoriavh/advent-of-code-2015-go
     directory: days
     output: assets
 ```
