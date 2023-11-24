@@ -2,66 +2,69 @@
     "2015": {
         "Go": {
             "1": {
-                "url": "https://github.com/Braweria/advent-of-code-2015-go/blob/main/days/01.go"
+                "url": "https://github.com/wiktoriavh/advent-of-code-2015-go/blob/main/days/01.go"
             },
             "2": {
-                "url": "https://github.com/Braweria/advent-of-code-2015-go/blob/main/days/02.go"
+                "url": "https://github.com/wiktoriavh/advent-of-code-2015-go/blob/main/days/02.go"
             },
             "3": {
-                "url": "https://github.com/Braweria/advent-of-code-2015-go/blob/main/days/03.go"
+                "url": "https://github.com/wiktoriavh/advent-of-code-2015-go/blob/main/days/03.go"
             },
             "4": {
-                "url": "https://github.com/Braweria/advent-of-code-2015-go/blob/main/days/4.go"
+                "url": "https://github.com/wiktoriavh/advent-of-code-2015-go/blob/main/days/4.go"
             }
         }
     },
     "2020": {
         "JavaScript": {
             "1": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/01.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/01.ts"
             },
             "2": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/02.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/02.ts"
             },
             "3": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/03.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/03.ts"
             },
             "8": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/Day08.js"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/Day08.js"
             },
             "10": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/Day10.js"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/Day10.js"
             },
             "11": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/Day11.js"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/Day11.js"
             },
             "12": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2020/src/Day12.js"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2020/src/Day12.js"
             }
         }
     },
     "2021": {
         "TypeScript": {
             "1": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/01.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/01.ts"
             },
             "2": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/02.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/02.ts"
             },
             "3": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/03.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/03.ts"
             },
             "4": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/04.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/04.ts"
             },
             "5": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/05.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/05.ts"
             },
             "6": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/06.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/06.ts"
             },
             "7": {
-                "url": "https://github.com/Braweria/Advent-of-Code/blob/main/2021/src/07.ts"
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/07.ts"
+            },
+            "8": {
+                "url": "https://github.com/wiktoriavh/Advent-of-Code/blob/main/2021/src/08.ts"
             }
         }
     }
